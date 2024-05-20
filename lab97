@@ -193,3 +193,32 @@ figure;
 subplot(1,2,1),imshow(I),title('Original image');
 subplot(1,2,2),imhist(I),title('Histogram');
  
+Program No.: 05 
+1)Edge Detection Using Roberts 
+clc; 
+newImg = imread('cameraman.tif'); 
+imshow(newImg); 
+robertsResult = edge(newImg,'roberts'); 
+subplot(2,1,1);imshow(newImg);title('Original'); 
+subplot(2,1,2);imshow(robertsResult);title('After Edge detection Using Robert'); 
+2)Edge detection Using Prewitts 
+clc; 
+newImg = imread('cameraman.tif'); 
+imshow(newImg); 
+afterFilter = edge(newImg,'prewitt'); 
+subplot(2,1,1);imshow(newImg);title('Original'); 
+subplot(2,1,2);imshow(afterFilter);title('After Edge detection Using Prewitt'); 
+3)Edge detection Using Sobel 
+clc; 
+newImg = imread('cameraman.tif'); 
+imshow(newImg); 
+BW = edge(newImg,'sobel',0.1) ; 
+subplot(2,1,1);imshow(newImg);title('Original'); 
+subplot(2,1,2);imshow(BW);title('After Edge detection Using Sobel'); 
+4)Edge detection Using Canny 
+clc; 
+clear all; 
+new_img = imread('cameraman.tif'); 
+CannyResult = edge(new_img,'Canny'); 
+subplot(1,2,1); imshow(new_img); title('Original'); 
+subplot(2,1,2); imshow(CannyResult); title('After Edge Detection Using Canny');
