@@ -1,0 +1,78 @@
+Program No.: 01
+1)Image Negative
+close all;
+clear all;
+clc
+r=imread('cat2.jpeg');
+imshow(r);
+for i=1:size(r,1)
+ for j=1:size(r,2)
+ s(i,j)=255-r(i,j);
+ end
+end
+subplot(2,1,1);imshow(r);title('Original');
+subplot(2,1,2);imshow(s);title('After Negative Transformation');
+
+2) Log Transformation
+r=imread('cat2.jpeg');
+ad=im2double(r);
+s=ad;
+[r,c]=size(ad);
+factor=1.5;
+for i=1:r
+ for j=1:c
+ s(i,j)=factor*log(1+ad(i,j));
+
+ end
+end
+subplot(2,1,1);imshow(ad);title('Original');
+subplot(2,1,2);imshow(s);title('After Log Transformation for factor=1');
+
+3) Power Law Transformation
+close all;
+clear all;
+clc
+r=imread('cat2.jpeg');
+ad=im2double(r);
+s=ad;
+[r,c]=size(ad);
+factor=1;
+for i=1:r
+ for j=1:c
+ s(i,j)=factor*ad(i,j) ^2;
+ end
+end
+
+subplot(2,2,1);imshow(ad);title('Original');
+subplot(2,2,4);imshow(s);title('After Power law Transformation for factor=1');
+
+4) Contrast Stretching
+close all;
+clear all;
+clc
+i=imread('cat2.jpeg');
+imshow(i);
+j=imadjust(i,[0.3,0.7],[]);
+subplot(2,1,1);imshow(i);title('Original');
+subplot(2,1,2);imshow(j);title('After Contrast stretching with L-int=0.3 & Hint=0.9');
+
+5) Gray level Slicing
+close all;
+clear all;
+clc
+p=imread('cat2.jpeg');
+ z=p;
+ [m,n]=size(p);
+ for i=1:m
+ for j=1:n
+ if((z(i,j))>120)&&(z(i,j)<150)
+ z(i,j)=255;
+ else
+ z(i,j)=p(i,j); %condition for grey level slicing with background
+ end
+ end
+ end
+
+ subplot(2,1,1);imshow(p);title('Original');
+subplot(2,1,2);imshow(z);title('After Gray Level slicing');
+ 
